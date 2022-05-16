@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+@mixin flexPropiedad ($direccion,$align,$justifi) {
+    display: flex;
+    flex-direction: $direccion;
+    align-items: $align;
+    justify-content: $justifi
+    
+}
+@import "_variables";
+@import "_tarjeta";
+@import "_buttons";
+
+nav{
+    font-size: 1.4rem;
+}
+
+
+/*Index*/    
+.grid-container{
+    width: 100%;
+    display: grid;
+    gap:5px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+    "header header"
+    "main main"
+    "footer footer";
+}
+
+.encabezado{
+    grid-area: header;
+    width: 100%;
+    .banner{
+        width: map-get($pancarta, ancho);
+        background-image: url(../img/bannercafeteria.jpg);
+        height: map-get($pancarta, altura );
+        background-position: map-get($pancarta, bg-posicion );
+        background-size: map-get($pancarta, bg-tamaño );
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-attachment: fixed;
+        h1{
+            font-size: 3rem;
+            color: white;
+        }
+    }
+}
+
+
+
+
+.principalI{
+    grid-area: main;
+    display: flex;
+    flex-flow: column nowrap;
+    
+}
+
+
+
+
+@media screen and (min-width:1024px){
+    .boton:hover{
+        background-color: #8ba7c8 ;
+    }
+}
+
+footer{
+    grid-area: footer;
+    width: 100%;
+    /*padding: 0.5rem;*/
+    background-color: #6D85a3;
+    color:white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-size: 1.4rem;
+    div a{
+        text-decoration: none;
+        color: white;
+        padding: 5px;
+    }
+    
+}
+
+
+/*Pagina Productos*/
+.galeria{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+
+    .productos{
+        margin: 5px;
+        
+    }
+}
+
+
+@media screen and (min-width:1024px){
+    .galeria{
+        display: flex;
+        flex-flow:row wrap;
+        justify-content: center;
+        .productos{
+            width: 250px;
+            box-shadow: 11px 10px 16px 0px rgba(101,101,101,0.66);
+            transition: transform 0.1s;
+            &hover{
+                transform: scale(1.5,1.5);
+            }
+        }
+
+    }   
+}
+
+/*Pagina Eventos*/
+.evento{
+    margin-top: 10px;
+    
+}
+.evento__contenido{
+    display:flex;
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: center;
+    
+
+}
+.evento__contenido h2{
+    padding: 5px;
+}
+
+
+.evento__contenido button{
+    align-self: center;
+    background-color: $colorboton;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+.evento__contenido button a{
+    text-decoration: none;
+    color: white;
+
+}
+
+
